@@ -1,0 +1,36 @@
+#include<iostream>
+
+using namespace std;
+struct Node
+{
+	int data;
+	Node* next;
+};
+
+Node* createNode(int data)
+{
+   Node* tmp=new Node;
+   tmp->data=data;
+   tmp->next=NULL;
+
+   return tmp;
+}
+
+void ReversePrint(Node* head)
+{
+	if(head==NULL)
+		return;
+	ReversePrint(head->next);
+	cout<<head->data>>endl;
+}
+
+int  main()
+{
+	Node* head=NULL;
+    head=createNode(1);
+    head->next=createNode(2);
+    head->next->next=createNode(3);
+    
+    ReversePrint(head);
+    return 0;
+}	
