@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+
+{
+	int n,m;
+	scanf("%d%d",&n,&m);
+
+	int *A,*B;
+	A=(int *)malloc(sizeof(int)*n);
+	B=(int *)malloc(sizeof(int)*m);
+
+	int i,j;
+	for(i=0;i<n;i++)
+		scanf("%d",&A[i]);
+	for(j=0;j<m;j++)
+		scanf("%d",&B[j]);
+    int *temp;
+    temp=(int *)malloc(sizeof(int)*(n+m));
+	int k=0;
+	i=0,j=0;
+	while(i<n&&j<m)
+	{
+		if(A[i]>B[j])
+			temp[k++]=B[j++];
+		else
+		    temp[k++]=A[i++];
+    }
+    while(i<n)
+    	temp[k++]=A[i++];
+    while(j<m)
+    	temp[k++]=B[j++];
+
+    //temp is the Merged Sorted Array
+    if((n+m)%2==0)
+    	printf("%f\n",((float)temp[(n+m)/2]+(float)temp[(n+m)/2 - 1])/2.0);
+    else printf("%f\n",temp[(n+m)/2] );
+
+}
