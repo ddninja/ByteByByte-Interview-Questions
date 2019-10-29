@@ -40,7 +40,7 @@ int main()
         {
         	if((n+m)%2==0)//even
         	{
-               cout<<(max(max1left,max2left)+min(min2right,min1right))/2<<endl;
+               cout<<float(max(max1left,max2left)+min(min2right,min1right))/2.0<<endl;
         	}
         	else 
         	{
