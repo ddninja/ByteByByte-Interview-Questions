@@ -1,0 +1,59 @@
+#include<iostream>
+#include<climits>
+using namespace std;
+int main()
+{
+	int n,m;
+	cin>>n>>m;
+	int *arr1,*arr2;
+	arr1=new int[n];
+	arr2=new int[m];
+	cout<<n<<m;
+	for(int i=0;i<n;i++)
+		cin>>arr1[i];
+	for(int j=0;j<m;j++)
+		cin>>arr2[j];
+	int* tmp;
+	if(n>m)
+	{
+		tmp=arr1;
+		arr1=arr2;
+		arr2=tmp;
+	}
+    int less=min(n,m);
+    int more=max(n,m);
+
+    int low=0,high=less;
+
+    while(low<high)
+    {
+    	int partition1=(low+high)/2;
+        int partition2=(n+m+1)/2 - partition1;
+        
+        int max1left=partition1>0?arr1[partition1-1]:INT_MIN;
+        int min1right=partition1==less?INT_MAX:arr1[partition1];
+
+        int max2left=partition2>0?arr2[partition2-1]:INT_MIN;
+        int min2right=partition2==more?INT_MAX:arr2[partition2];
+
+        if(max1left<=min2right&&max2left<=min1right)
+        {
+        	if((n+m)%2==0)//even
+        	{
+               cout<<(max(max1left,max2left)+min(min2right,min1right))/2<<endl;
+        	}
+        	else 
+        	{
+        		cout<<max(max1left,max2left)<<endl;
+        	}
+        	break;
+        }
+        else if(max1left>min1right)
+        {
+               high=partition1-1;
+        }
+        else low=partition1+1;
+
+    }
+    cout<<"thanks!!!"<<endl;
+}
