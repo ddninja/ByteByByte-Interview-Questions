@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Node
+{
+	int data;
+	Node* next;
+};
+
+Node* createNode(int data)
+{
+   Node* tmp=new Node;
+   tmp->data=data;
+   tmp->next=NULL;
+
+   return tmp;
+}
+
+int size(Node* head)
+{
+	int co=0;
+	while(head!=NULL)
+	{
+        co++;
+        head=head->next;
+	}
+    return co;
+}
+
+void ReversePrint(Node* head)
+{
+    int n=size(head);
+    int j=0;   
+    while (head != NULL) { 
+         for (int i = 0; i < 2 * (n - j); i++) 
+            printf(" "); 
+         printf("%d\r", head->data); 
+         head = head->next; 
+         j++; 
+    } 
+ 
+}
+
+int main()
+{
+    Node* head=NULL;
+    head=createNode(1);
+    head->next=createNode(2);
+    head->next->next=createNode(3);
+    
+    ReversePrint(head);
+}
+
